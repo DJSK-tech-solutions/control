@@ -1,0 +1,202 @@
+/* globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 180 20% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    /* Main dark green header card - Updated to match design */
+    --dark-card: 153 43% 15%;  /* #1B4332 */
+    --dark-card-foreground: 0 0% 100%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+ 
+    /* Updated green colors to match design */
+    --primary: 122 46% 34%;    /* #2E7D32 - Main green */
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 120 55% 95%;  /* #E8F5E9 - Light green background */
+    --secondary-foreground: 122 46% 34%;
+ 
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+ 
+    --accent: 120 55% 95%;     /* Same as secondary for consistency */
+    --accent-foreground: 122 46% 34%;
+ 
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 122 46% 34%;
+
+    /* Updated status colors */
+    --success: 122 46% 34%;    /* Matches primary */
+    --warning: 38 92% 50%;
+    --error: 0 84% 60%;
+ 
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Dark mode colors updated to maintain consistency */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+ 
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+ 
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+ 
+    --primary: 122 46% 34%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+ 
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+ 
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+ 
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 213 27% 84%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Updated component styles to match design */
+  .nav-item {
+    @apply w-6 h-6 text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer;
+  }
+
+  .nav-item.active {
+    @apply text-primary bg-secondary rounded-xl p-3;
+  }
+
+  /* Updated button styles */
+  .tab-button {
+    @apply px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200
+    border border-border hover:bg-secondary/50 hover:text-primary;
+  }
+
+  .tab-button.active {
+    @apply bg-secondary text-primary border-none;
+  }
+
+  /* Updated card styles */
+  .stats-card {
+    @apply bg-white rounded-3xl shadow-sm border border-border/50;
+  }
+
+  .welcome-card {
+    @apply bg-[#1B4332] text-white rounded-3xl p-8;
+  }
+
+  /* Updated chart styles */
+  .chart-container {
+    @apply relative rounded-3xl bg-background p-6;
+  }
+
+  .chart-line {
+    @apply stroke-[#2E7D32] stroke-2;
+  }
+
+  .chart-line-secondary {
+    @apply stroke-[#E5E7EB] stroke-2 stroke-dasharray-2;
+  }
+
+  /* Updated notification styles */
+  .notification-item {
+    @apply p-4 rounded-xl bg-secondary transition-all duration-200;
+  }
+
+  .notification-item.unread {
+    @apply bg-white border border-border;
+  }
+
+  .notification-avatar {
+    @apply w-8 h-8 rounded-full ring-2 ring-white;
+  }
+
+  /* Updated user avatar grid */
+  .user-avatar-grid {
+    @apply grid grid-cols-6 gap-3;
+  }
+
+  .user-avatar {
+    @apply w-12 h-12 rounded-full ring-2 ring-white shadow-sm;
+  }
+
+  /* Updated stats display */
+  .stat-card {
+    @apply flex items-center space-x-2 bg-secondary rounded-lg px-4 py-2;
+  }
+
+  .stat-value {
+    @apply text-primary font-semibold;
+  }
+
+  .stat-icon {
+    @apply w-4 h-4 text-primary;
+  }
+
+  /* Action buttons */
+  .action-button {
+    @apply w-8 h-8 flex items-center justify-center bg-gray-50 rounded-full;
+  }
+
+  .action-icon {
+    @apply w-4 h-4 text-gray-400;
+  }
+}
+
+/* Animations remain the same */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.welcome-gradient {
+  background: 
+  linear-gradient(0deg, rgb(23, 44, 21), rgb(55, 128, 45)),
+  linear-gradient(0deg, rgba(209, 23, 23, 0.903), rgba(231, 40, 40, 0.42)),
+  radial-gradient(50% 110.63% at 48.79% 50%, rgba(29, 222, 52, 0.2) 0%, rgba(210, 244, 214, 0.2) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  backdrop-filter: blur(42.81553268432617px)
+}
+

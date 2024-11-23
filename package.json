@@ -1,21 +1,49 @@
 {
+
   "name": "dashboard1",
+  "homepage": "https://DJSK-tech-solutions.github.io/control/",
   "version": "0.1.0",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "private": true,
   "dependencies": {
+    "@prisma/client": "^5.0.0",
+    "@radix-ui/react-popover": "^1.1.2",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@tailwindcss/forms": "^0.5.9",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "autoprefixer": "^10.4.20",
+    "card": "^2.5.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "components": "^0.1.0",
+    "lucide-react": "^0.454.0",
+    "popover": "^2.4.1",
+    "postcss": "^8.4.47",
+    "radix-ui": "^1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.28.0",
     "react-scripts": "5.0.1",
+    "recharts": "^2.13.3",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss": "^3.4.14",
+    "tailwindcss-animate": "^1.0.7",
+    "vite": "^5.4.11",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prisma:seed": "npx prisma db seed",
+    "predepoly": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +62,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "prisma": "^5.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   }
 }

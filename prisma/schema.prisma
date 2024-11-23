@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // you can also use "mysql" or "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  currentMonthRevenue   Float
+  previousMonthRevenue  Float
+  revenueDifference    Float
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  notifications        Notification[]
+}
+
+model UserStats {
+  id                  Int      @id @default(autoincrement())
+  totalConnectedUsers Int
+  totalActiveUsers    Int
+  totalPackages       Int
+  updatedAt          DateTime @updatedAt
+}
+
+model RevenueData {
+  id          Int      @id @default(autoincrement())
+  month       String
+  year        Int
+  value       Float
+  secondValue Float
+  createdAt   DateTime @default(now())
+}
+
+model Notification {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  type            String
+  message         String?
+  priority        String
+  backgroundColor String
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id])
